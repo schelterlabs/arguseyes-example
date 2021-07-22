@@ -1,0 +1,12 @@
+series: yaml-paper-example-test
+artifact_storage_uri: /mlruns/
+
+pipeline:
+  template: classification
+  path: /home/runner/work/arguseyes-example/arguseyes-example/paper-example.py
+  args:
+    - Digital_Video_Games
+    - !!str 2015-08-01
+  working_directory: /home/runner/work/arguseyes-example/arguseyes-example
+  detect_issues:
+    - label_shift
