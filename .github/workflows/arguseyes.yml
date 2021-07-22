@@ -1,6 +1,6 @@
 name: ArgusEyes
 
-on: [ push ]
+on: [ push, workflow_dispatch ]
 
 jobs:
   demo-paper-example:
@@ -33,8 +33,8 @@ jobs:
       - name: Run ArgusEyes
         run: eyes demo-paper-example.yaml
 
-      - name: Archive mlflow artifacts
+      - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
           name: mlruns-artifacts
-          path: /home/runner/work/arguseyes-example/mlruns/*/*/artifacts
+          path: /home/runner/work/arguseyes-example/mlruns
