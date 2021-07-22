@@ -33,4 +33,8 @@ jobs:
       - name: Run ArgusEyes
         run: eyes demo-paper-example.yaml
 
-      # TODO: Publish artifacts
+      - name: Archive mlflow artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: mlruns-artifacts
+          path: /home/runner/work/arguseyes-example/mlruns/*/*/artifacts

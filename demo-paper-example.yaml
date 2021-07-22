@@ -1,5 +1,5 @@
 series: yaml-paper-example-test
-artifact_storage_uri: /mlruns/
+artifact_storage_uri: /home/runner/work/arguseyes-example/mlruns/
 
 pipeline:
   template: classification
