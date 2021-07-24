@@ -5,3 +5,4 @@ Example project using [ArgusEyes](https://github.com/schelterlabs/arguseyes) in 
 
 ![example workflow](https://github.com/shubhaguha/arguseyes-example/actions/workflows/arguseyes.yml/badge.svg)
 
+
