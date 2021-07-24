@@ -10,7 +10,6 @@ pipeline:
   working_directory: /home/runner/work/arguseyes-example/arguseyes-example
   detect_issues:
     - constant_features
-    - unnormalised_features
     - label_shift
-    - covariance shift
+    - covariate_shift
     - traintest_overlap
