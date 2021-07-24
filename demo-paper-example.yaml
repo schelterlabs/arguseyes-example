@@ -1,4 +1,4 @@
-series: yaml-paper-example-test
+series: github-ci-integration-test
 artifact_storage_uri: /home/runner/work/arguseyes-example/mlruns/
 
 pipeline:
@@ -6,7 +6,11 @@ pipeline:
   path: /home/runner/work/arguseyes-example/arguseyes-example/paper-example.py
   args:
     - Digital_Video_Games
-    - !!str 2015-08-01
+    - !!str 2015-07-31
   working_directory: /home/runner/work/arguseyes-example/arguseyes-example
   detect_issues:
+    - constant_features
+    - unnormalised_features
     - label_shift
+    - covariance shift
+    - traintest_overlap
