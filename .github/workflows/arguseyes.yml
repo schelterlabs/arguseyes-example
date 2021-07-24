@@ -30,7 +30,7 @@ jobs:
           pip install -U pip
           pip install git+https://github.com/schelterlabs/arguseyes.git
 
-      - name: Run ArgusEyes
+      - name: Screen pipeline with ArgusEyes
         run: eyes demo-paper-example.yaml
 
       - name: Archive artifacts
