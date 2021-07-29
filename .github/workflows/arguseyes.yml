@@ -31,7 +31,7 @@ jobs:
           pip install git+https://github.com/schelterlabs/arguseyes.git
 
       - name: Screen pipeline with ArgusEyes
-        run: eyes demo-paper-example.yaml
+        run: python -m arguseyes demo-paper-example.yaml
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
