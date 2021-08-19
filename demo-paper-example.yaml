@@ -9,7 +9,6 @@ pipeline:
     - !!str 2015-07-31
   working_directory: /home/runner/work/arguseyes-example/arguseyes-example
   detect_issues:
-    - constant_features
     - label_shift
     - covariate_shift
     - traintest_overlap
