@@ -7,3 +7,7 @@ jobs:
     uses: ./.github/workflows/reusable_workflow.yml
     with:
       pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
+  example-mlinspect-computervision-sneakers-labelerrors:
+    uses: ./.github/workflows/reusable_workflow.yml
+    with:
+      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
