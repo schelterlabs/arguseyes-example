@@ -3,15 +3,39 @@ name: Demo Argus Eyes workflow
 on: [ push, workflow_dispatch ]
 
 jobs:
-  example-mlflow-regression-nyctaxifare-dataleakage:
-    uses: ./.github/workflows/reusable_workflow.yml
-    with:
-      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
-  example-mlinspect-computervision-sneakers-labelerrors:
-    uses: ./.github/workflows/reusable_workflow.yml
-    with:
-      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
-  example-openml-classification-incomelevel-fairness:
-    uses: ./.github/workflows/reusable_workflow.yml
-    with:
-      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
+  demo-examples:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.9 ]
+        pipeline-config-path:
+        - /home/runner/work/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
+        - /home/runner/work/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
+        - /home/runner/work/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+
+      - name: Install ArgusEyes
+        env:
+          SETUPTOOLS_USE_DISTUTILS: stdlib
+        run: |
+          pip install -U pip
+          pip install git+https://github.com/schelterlabs/arguseyes.git@sigmod-demo
+
+      - name: Screen pipeline with ArgusEyes
+        run: python -m arguseyes ${{ matrix.pipeline-config-path }}
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: mlruns-artifacts
+          path: /home/runner/work/arguseyes-example/mlruns
