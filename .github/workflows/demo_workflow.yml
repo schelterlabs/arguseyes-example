@@ -1,0 +1,9 @@
+name: Demo Argus Eyes workflow
+
+on: [ push, workflow_dispatch ]
+
+jobs:
+  example-mlflow-regression-nyctaxifare-dataleakage:
+    uses: ./.github/workflows/reusable_workflow.yml
+    with:
+      pipeline-config-path: arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
