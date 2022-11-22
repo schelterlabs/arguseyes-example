@@ -11,3 +11,7 @@ jobs:
     uses: ./.github/workflows/reusable_workflow.yml
     with:
       pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
+  example-openml-classification-incomelevel-fairness:
+    uses: ./.github/workflows/reusable_workflow.yml
+    with:
+      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
