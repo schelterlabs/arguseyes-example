@@ -8,7 +8,7 @@ on:
         type: string
 
 jobs:
-  reusable-workflow-job:
+  arguseyes-template:
     runs-on: ubuntu-latest
     strategy:
       matrix:
