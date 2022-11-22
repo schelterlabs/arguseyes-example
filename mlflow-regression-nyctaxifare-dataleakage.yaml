@@ -1,0 +1,9 @@
+series: development
+artifact_storage_uri: /home/runner/work/arguseyes-example/mlruns/
+
+pipeline:
+  path: /home/runner/work/arguseyes-example/arguseyes-example/pipelines/mlflow-regression-nyctaxifare.py
+  template: classification
+  detect_issues:
+    - issue:
+        name: data_leakage
