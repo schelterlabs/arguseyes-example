@@ -6,4 +6,4 @@ jobs:
   example-mlflow-regression-nyctaxifare-dataleakage:
     uses: ./.github/workflows/reusable_workflow.yml
     with:
-      pipeline-config-path: arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
+      pipeline-config-path: /home/runner/work/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
