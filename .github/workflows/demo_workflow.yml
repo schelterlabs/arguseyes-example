@@ -5,27 +5,21 @@ on: [ push, workflow_dispatch ]
 jobs:
   demo-examples:
     runs-on: ubuntu-latest
-    container:
-      image: shubhaguha/arguseyes:20221124
-      volumes:
-        - my_docker_volume:/volume_mount
+    container: shubhaguha/arguseyes-example:20221124
     strategy:
       matrix:
         pipeline-config-path:
-        - mlflow-regression-nyctaxifare-dataleakage.yaml
-        - mlinspect-computervision-sneakers-labelerrors.yaml
-        - openml-classification-incomelevel-fairness.yaml
-      fail-fast: false
+        - /mlflow-regression-nyctaxifare-dataleakage.yaml
+        - /mlinspect-computervision-sneakers-labelerrors.yaml
+        - /openml-classification-incomelevel-fairness.yaml
 
     steps:
-      - uses: actions/checkout@v3
-
       - name: Screen pipeline with ArgusEyes
-        run: PROJECT_ROOT=$PWD python -m arguseyes ${{ matrix.pipeline-config-path }}
+        run: PROJECT_ROOT=/ python -m arguseyes ${{ matrix.pipeline-config-path }}
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: mlruns-artifacts
-          path: /__w/arguseyes-example/arguseyes-example/mlruns
+          path: /mlruns
