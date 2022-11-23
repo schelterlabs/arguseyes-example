@@ -5,30 +5,19 @@ on: [ push, workflow_dispatch ]
 jobs:
   demo-examples:
     runs-on: ubuntu-latest
+    container:
+      image: shubhaguha/arguseyes:20221123
+      volumes:
+        - my_docker_volume:/volume_mount
     strategy:
       matrix:
-        python-version: [ 3.9 ]
         pipeline-config-path:
-        - /home/runner/work/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
-        - /home/runner/work/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
-        - /home/runner/work/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
+        - /__w/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
+        - /__w/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
+        - /__w/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Setup Graphviz
-        uses: ts-graphviz/setup-graphviz@v1
-
-      - name: Install ArgusEyes
-        env:
-          SETUPTOOLS_USE_DISTUTILS: stdlib
-        run: |
-          pip install -U pip
-          pip install git+https://github.com/schelterlabs/arguseyes.git@sigmod-demo
+      - uses: actions/checkout@v3
 
       - name: Screen pipeline with ArgusEyes
         run: python -m arguseyes ${{ matrix.pipeline-config-path }}
@@ -38,4 +27,4 @@ jobs:
         if: always()
         with:
           name: mlruns-artifacts
-          path: /home/runner/work/arguseyes-example/mlruns
+          path: /__w/arguseyes-example/arguseyes-example/mlruns
