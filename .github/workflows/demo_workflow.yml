@@ -15,6 +15,7 @@ jobs:
         - mlflow-regression-nyctaxifare-dataleakage.yaml
         - mlinspect-computervision-sneakers-labelerrors.yaml
         - openml-classification-incomelevel-fairness.yaml
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v3
