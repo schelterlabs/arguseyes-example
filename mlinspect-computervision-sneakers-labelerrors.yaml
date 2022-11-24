@@ -1,8 +1,8 @@
 series: development
-artifact_storage_uri: /__w/arguseyes-example/arguseyes-example/mlruns/
+artifact_storage_uri: ${PROJECT_ROOT}/mlruns/
 
 pipeline:
-  path: /__w/arguseyes-example/arguseyes-example/pipelines/mlinspect-computervision-sneakers.py
+  path: ${PROJECT_ROOT}/pipelines/mlinspect-computervision-sneakers.py
   template: classification
   detect_issues:
     - issue:

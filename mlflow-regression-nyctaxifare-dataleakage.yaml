@@ -1,8 +1,8 @@
 series: development
-artifact_storage_uri: /__w/arguseyes-example/arguseyes-example/mlruns/
+artifact_storage_uri: ${PROJECT_ROOT}/mlruns/
 
 pipeline:
-  path: /__w/arguseyes-example/arguseyes-example/pipelines/mlflow-regression-nyctaxifare.py
+  path: ${PROJECT_ROOT}/pipelines/mlflow-regression-nyctaxifare.py
   template: classification
   detect_issues:
     - issue:

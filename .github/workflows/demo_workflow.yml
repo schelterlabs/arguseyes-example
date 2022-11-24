@@ -6,21 +6,21 @@ jobs:
   demo-examples:
     runs-on: ubuntu-latest
     container:
-      image: shubhaguha/arguseyes:20221123
+      image: shubhaguha/arguseyes:20221124
       volumes:
         - my_docker_volume:/volume_mount
     strategy:
       matrix:
         pipeline-config-path:
-        - /__w/arguseyes-example/arguseyes-example/mlflow-regression-nyctaxifare-dataleakage.yaml
-        - /__w/arguseyes-example/arguseyes-example/mlinspect-computervision-sneakers-labelerrors.yaml
-        - /__w/arguseyes-example/arguseyes-example/openml-classification-incomelevel-fairness.yaml
+        - mlflow-regression-nyctaxifare-dataleakage.yaml
+        - mlinspect-computervision-sneakers-labelerrors.yaml
+        - openml-classification-incomelevel-fairness.yaml
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Screen pipeline with ArgusEyes
-        run: python -m arguseyes ${{ matrix.pipeline-config-path }}
+        run: PROJECT_ROOT=$PWD python -m arguseyes ${{ matrix.pipeline-config-path }}
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2

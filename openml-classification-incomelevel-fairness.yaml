@@ -1,9 +1,9 @@
 series: development
-artifact_storage_uri: /__w/arguseyes-example/arguseyes-example/mlruns/
+artifact_storage_uri: ${PROJECT_ROOT}/mlruns/
 
 pipeline:
   template: classification
-  path: /__w/arguseyes-example/arguseyes-example/pipelines/openml-classification-incomelevel.py
+  path: ${PROJECT_ROOT}/pipelines/openml-classification-incomelevel.py
   detect_issues:
     - issue:
         name: fairness
